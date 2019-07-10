@@ -1,0 +1,37 @@
+<mat-toolbar class="sticky nav-bar">
+        <!-- Box containing all the buttons -->
+        <span class="left-box">
+            <button mat-button class="middle" (click)="sendPage('home')"><i class="material-icons row-icon">home</i>Home</button>
+            <button mat-button class="middle" (click)="sendPage('moments')"><i class="material-icons row-icon">sentiment_satisfied_alt</i>Moments</button>
+            <button mat-button class="middle" (click)="sendPage('notifications')"><i class="material-icons row-icon">notifications_none</i>Notifications</button>
+            <button mat-button class="middle" (click)="sendPage('messages')"><i class="material-icons row-icon">email</i>Messages</button>
+        </span>
+        <span class="fill-remaining-space"></span>
+        <span class="middle-box">
+            <!-- Search Form -->
+            <form class="form-inline md-form form-sm middle">
+                <i class="material-icons row-icon">search</i>
+                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"
+                    mdbInput>
+            </form>
+        </span>
+        <span class="middle-box">
+            <!-- Post Button -->
+            <button mat-button class="middle" style="background-color: #4AB3F4; color: white; border-radius: 999rem;" (click)="openDialog()">Post</button>
+        </span>
+
+        <span class="right-box">
+                <!-- Personal Info Toggle Bar -->
+                <div class="btn-group middle">
+                        <button data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none;"><i class="material-icons row-icon">arrow_drop_down</i>
+                        </button>
+                        <!-- Below are drop down menus -->
+                        <div class="dropdown-menu dropdown-menu-lg-right">
+                          <button class="dropdown-item" type="button">那咋办嘛</button>
+                          <button class="dropdown-item" type="button">您配吗</button>
+                          <button class="dropdown-item" type="button"></button>
+                        </div>
+                      </div>
+            </span>
+</mat-toolbar>
+

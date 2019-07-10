@@ -1,0 +1,71 @@
+.bordered-box {
+    border: 1px red solid;
+}
+
+.outer {
+    width: 100%;
+    height: 100%;
+}
+
+.horizontal-middle {
+    margin: auto;
+}
+  
+div.middle {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: auto;
+}
+
+button.middle {
+    position: relative;
+    top: 45%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: auto;
+    outline: none;
+}
+
+.middle {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: auto;
+}
+
+button {
+    outline: none;
+}
+
+
+.page {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.content {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.full-container {
+    height: 100%;
+    width: 100%;
+}
+
+.half-height-container {
+    height: 50%;
+    width: 100%;
+}
+
+.half-width-container {
+    height: 100%;
+    width: 50%;
+}

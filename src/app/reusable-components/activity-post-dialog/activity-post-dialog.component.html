@@ -1,0 +1,52 @@
+<!-- Title -->
+<h1 mat-dialog-title>New Activity</h1>
+<!-- Form Fields -->
+<div mat-dialog-content>
+    <!-- Activity Name -->
+    <mat-form-field class="block">
+        <input required matInput [formControl]="activityName" placeholder="Activity Name">
+        <mat-error *ngIf="activityName.invalid">You must enter a value</mat-error>
+    </mat-form-field>
+    <!-- Activity Introduction -->
+    <mat-form-field class="block">
+            <input matInput [(ngModel)]="introduction" placeholder="Introduction">
+    </mat-form-field>
+    <!-- Activity Category -->
+    <mat-form-field class="block">
+            <input matInput [(ngModel)]="category" placeholder="Category">
+    </mat-form-field>
+    <!-- Activity Year -->
+    <mat-form-field class="one-third-container">
+        <mat-select required placeholder="Year" [(ngModel)]="year">
+            <mat-option value="" *ngFor="let each of constants.years">{{ each }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- Activity Month -->
+    <mat-form-field class="one-third-container">
+        <mat-select required placeholder="Month" [(ngModel)]="month">
+            <mat-option value="" *ngFor="let each of constants.months">{{ each }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- Activity Day -->
+    <mat-form-field class="one-third-container">
+        <mat-select required placeholder="Day" [(ngModel)]="day">
+            <mat-option value="" *ngFor="let each of constants.days">{{ each }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- Activity Hour and Minutes -->
+    <mat-form-field class="one-third-container">
+        <mat-select required placeholder="Hour" [(ngModel)]="hour">
+            <mat-option value="" *ngFor="let each of constants.hours">{{ each }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="one-third-container">
+        <mat-select required placeholder="Minute" [(ngModel)]="minute">
+            <mat-option value="" *ngFor="let each of constants.minutes">{{ each }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- Top Are Activity times -->
+    <div mat-dialog-content>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button [mat-dialog-close]="animal" cdkFocusInitial>Ok</button>
+    </div>
+</div>

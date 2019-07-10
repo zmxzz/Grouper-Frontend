@@ -1,0 +1,11 @@
+.block {
+    margin-top: 3px;
+    width: 60%;
+    display: block;
+}
+
+.one-third-container {
+    display: inline-block;
+    margin-right: 10px;
+    width: 80px;
+}

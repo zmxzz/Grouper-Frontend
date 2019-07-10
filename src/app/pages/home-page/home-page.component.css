@@ -1,0 +1,11 @@
+.left-container {
+    height: 100%;
+    width: 280px;
+    margin: 1% auto auto 7%;
+}
+
+.middle-container {
+    display: inline-block;
+    margin: 1% auto auto 1%;
+    padding: 0px;
+}
