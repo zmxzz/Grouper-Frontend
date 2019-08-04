@@ -16,17 +16,20 @@ export class BasicInfoCardComponent implements OnInit {
 
     ngOnInit() {
         // Initialize user's basic information
-        this.userService.getUserBasicInformation()
-        .then((userInfo) => {
-            this.userInfo = userInfo['result'];
+        this.getUserInfo();
+    }
+
+    async getUserInfo() {
+        try {
+            let userInfo = await this.userService.getUserBasicInformation();
+            this.userInfo = userInfo;
             this.userInfo['firstname'] = this.userInfo['firstname'].length === 0 ? 'N/A' : this.userInfo['firstname'];
             this.fullname = this.userInfo['firstname'] + ' ' + this.userInfo['lastname'];
             this.username = '@' + this.userInfo['username'];
-            console.log(this.userInfo);
-        })
-        .catch((error) => {
+            localStorage.setItem('userId', this.userInfo['_id']);
+        } catch (error) {
             console.log(error);
-        });
+        }
     }
     
 }

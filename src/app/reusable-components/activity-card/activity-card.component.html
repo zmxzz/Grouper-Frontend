@@ -1,1 +1,24 @@
-<div></div>
+<mat-card class="card">
+    <div class="title">
+        <div class="middle left">{{ category }}{{ name }}</div>
+    </div>
+    <div class="bar">
+            <div class="half-width-container time-location">
+                <mat-label class="text"><mat-icon class="middle">calendar_today</mat-icon> {{ time }}</mat-label>
+            </div>
+            <div class="half-width-container time-location" style="border-style: none none none solid">
+                <mat-label class="text"><mat-icon class="middle">location_on</mat-icon> {{ address }}</mat-label>
+            </div>
+    </div>
+    <div class="bar" style="border: 1px lightgray; border-style: solid none solid none;">
+        <mat-label class="text"><mat-icon style="vertical-align: top">texture</mat-icon> {{ introduction }}</mat-label>
+    </div>
+    <div class="bar">
+        <div class="half-width-container time-location">
+            <mat-label class="text"><mat-icon style="vertical-align: top">people_outline</mat-icon> Spot Remain: {{ spotRemain }}</mat-label>
+        </div>
+        <div class="half-width-container time-location">
+            <button mat-button class="join middle" (click)="doAction()" [style.background-color]="getBackgroundColor()">{{ getAction() }}</button>
+        </div>
+    </div>
+</mat-card>

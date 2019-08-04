@@ -1,7 +1,8 @@
-import { Component, Output } from '@angular/core';
-import { NavigationService } from 'src/service/navigation.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { Component, Output, OnInit } from '@angular/core';
+import { CommunicateService } from '../../../service/communicate.service';
 import { ActivityPostDialogComponent } from '../activity-post-dialog/activity-post-dialog.component';
+import { MomentPostDialogComponent } from '../moment-post-dialog/moment-post-dialog.component';
 
 @Component({
     selector: 'app-top-nav-bar',
@@ -9,16 +10,27 @@ import { ActivityPostDialogComponent } from '../activity-post-dialog/activity-po
     styleUrls: ['./top-nav-bar.css', '../../app.component.css']
 })
 export class TopNavBarComponent {
-    constructor(private navigationService: NavigationService, public dialog: MatDialog) {}
+    constructor(
+      private communicateService: CommunicateService, 
+      public dialog: MatDialog
+      ) {}
 
     sendPage(page: string) {
-        this.navigationService.changePage(page);
+        this.communicateService.changePage(page);
     }
 
-    openDialog(): void {
-        this.dialog.open(ActivityPostDialogComponent, {
-          width: '500px'
-        });
-      }
+    // Open a floating dialog requiring activity form
+    openActivityDialog(): void {
+      this.dialog.open(ActivityPostDialogComponent, {
+        width: '500px'
+      });
+    }
+
+    // Open a floating dialog requiring moment form
+    openMomentDialog(): void {
+      this.dialog.open(MomentPostDialogComponent,  {
+        width: '500px'
+      });
+    }
 
 }

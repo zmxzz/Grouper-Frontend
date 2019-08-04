@@ -43,6 +43,11 @@ button {
     outline: none;
 }
 
+.post-button {
+    background-color: #1DA1F2; 
+    color: white;
+    border-radius: 999rem;
+}
 
 .page {
     height: 100%;

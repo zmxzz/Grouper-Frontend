@@ -7,16 +7,12 @@
    height: 50px;
    position: fixed;
    top: 0;
+   z-index: 100;
 }
 
 .left-box {
     height: 100%;
     margin-left: 5%;
-}
-
-.middle-box {
-    height: 100%;
-    margin-right: 1%;
 }
 
 .right-box {
@@ -34,13 +30,35 @@
     /* This fills the remaining space, by using flexbox. 
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
-  }
+}
 
-  i {
-      font-size: 24px;
-      color: grey;
-  }
+i {
+    font-size: 24px;
+    color: grey;
+}
 
-  button {
-      color: grey;
-  }
+button {
+    color: grey;
+}
+
+.dropdown-toggle::after {
+    display:none;
+}
+
+.dialog {
+    background-color: #E9F6FD;
+}
+
+@media (min-width: 0px) {
+    .middle-box {
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 900px) {
+    .middle-box {
+        height: 100%;
+        margin-right: 1%;
+        visibility: visible;
+    }
+}

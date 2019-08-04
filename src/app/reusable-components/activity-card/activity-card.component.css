@@ -1,0 +1,47 @@
+.card {
+    width: 100%;
+    padding: 0px;
+    margin-bottom: 20px;
+}
+
+.title {
+    height: 40px;
+    width: 100%;
+    background-color: #1DA1F2;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.bar {
+    height: 40px;
+    width: 100%;
+    padding: 5px;
+}
+
+.time-location {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px lightgray;
+}
+
+.text {
+    margin-left: 10px;
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.join {
+    float: right;
+    color: white;
+    margin-right: 5px;
+    line-height: 30px;
+}

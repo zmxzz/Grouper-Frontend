@@ -1,0 +1,14 @@
+<!-- Title -->
+<h1 mat-dialog-title class="title">New Moment</h1>
+<button mat-icon-button class="title" tabindex="-1" style="margin-left: 290px;" (click)="onCancelClick()"><mat-icon>close</mat-icon></button>
+<!-- Form Fields -->
+<div mat-dialog-content style="min-width: 500px;">
+    <textarea style="margin-top: 5px;" class="form-control" rows="4" placeholder="What's happening?" [(ngModel)]="momentContent"></textarea>
+    <input hidden type="file" #uploader (change)="saveUploadFile($event)" [accept]="fileTypeService.getAcceptTypes()"/>
+    <button mat-icon-button type="file" class="buttons-under-form" (click)="uploader.click()"><mat-icon>image</mat-icon></button>
+    <button mat-icon-button class="buttons-under-form"><mat-icon>gif</mat-icon></button>
+    <button mat-icon-button class="buttons-under-form"><mat-icon>location_on</mat-icon></button>
+    <button mat-flat-button class="buttons-under-form post-moment-button" (click)="uploadFile()">Post</button>
+    <img class="image" *ngFor="let eachFile of fileTypeService.getUploadedFileUrls()" [src]="eachFile"/>   
+    <mat-label>{{ fileTypeService.getUploadedVideoName() }}</mat-label>
+</div>

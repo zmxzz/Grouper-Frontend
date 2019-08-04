@@ -1,3 +1,3 @@
 export const ServerConfig = {
-    serverAddress: 'http://localhost:3000'
+    serverAddress: 'http://18.191.99.167:3000'
 }

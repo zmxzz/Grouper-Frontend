@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
-import { NavigationService } from 'src/service/navigation.service';
+import { CommunicateService } from '../service/communicate.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,10 @@ import { NavigationService } from 'src/service/navigation.service';
 export class AppComponent implements OnInit {
   // Constructor with two service
   // UserService: Service communicating with backend
-  // NavigationService: Page control service
-  constructor(private userService: UserService, private navigationService: NavigationService) {
-    this.navigationService.getPage()
+  // CommunicateService: Page control service
+  constructor(private userService: UserService, private communicateService: CommunicateService) {
+    this.communicateService.getPage()
     .subscribe(nextPage => {
-      console.log(nextPage);
       this.selectedPage = nextPage;
     });
   }
@@ -27,8 +26,7 @@ export class AppComponent implements OnInit {
 
   // returns true if the user is currently logged in
   isLoggedIn(): boolean{
-    let grouperUserToken = localStorage.getItem('grouperUserToken');
-    return grouperUserToken !== null && grouperUserToken !== '';
+    return this.userService.isLoggedIn();
   }
 
   // Call logout function to destroy token

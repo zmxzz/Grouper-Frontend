@@ -1,4 +1,4 @@
-<mat-toolbar class="sticky nav-bar">
+<mat-toolbar class="nav-bar">
         <!-- Box containing all the buttons -->
         <span class="left-box">
             <button mat-button class="middle" (click)="sendPage('home')"><i class="material-icons row-icon">home</i>Home</button>
@@ -17,21 +17,33 @@
         </span>
         <span class="middle-box">
             <!-- Post Button -->
-            <button mat-button class="middle" style="background-color: #4AB3F4; color: white; border-radius: 999rem;" (click)="openDialog()">Post</button>
+            <!-- <button data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" mat-button class="middle" style="background-color: #1DA1F2; color: white; border-radius: 999rem;" (click)="openDialog()">Post</button>
+            <div class="dropdown-menu dropdown-menu-lg-right">
+                <button class="dropdown-item" type="button">Activity</button>
+                <button class="dropdown-item" type="button">Moment</button>
+            </div> -->
+            <div class="middle">
+                <div ngbDropdown>
+                    <button mat-button ngbDropdownToggle class="post-button">Post</button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                    <button ngbDropdownItem (click)="openActivityDialog()">Activity</button>
+                    <button ngbDropdownItem (click)="openMomentDialog()">Moment</button>
+                    </div>
+                </div>
+            </div>
         </span>
 
+        <!-- Dropdown -->
         <span class="right-box">
-                <!-- Personal Info Toggle Bar -->
-                <div class="btn-group middle">
-                        <button data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none;"><i class="material-icons row-icon">arrow_drop_down</i>
-                        </button>
-                        <!-- Below are drop down menus -->
-                        <div class="dropdown-menu dropdown-menu-lg-right">
-                          <button class="dropdown-item" type="button">那咋办嘛</button>
-                          <button class="dropdown-item" type="button">您配吗</button>
-                          <button class="dropdown-item" type="button"></button>
-                        </div>
-                      </div>
-            </span>
+            <div class="middle">
+                <div ngbDropdown>
+                    <button class="btn dropdown-toggle-split" ngbDropdownToggle><i class="material-icons row-icon">arrow_drop_down</i></button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                    <button ngbDropdownItem>One</button>
+                    <button ngbDropdownItem>Two</button>
+                    <button ngbDropdownItem>Four!</button>
+                    </div>
+                </div>
+            </div>
+        </span>
 </mat-toolbar>
-

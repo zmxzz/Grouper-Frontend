@@ -1,0 +1,25 @@
+.buttons-under-form {
+    color: #1DA1F2;
+    margin-top: 5px;
+    display: inline-block;
+}
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+.post-moment-button {
+    margin-left: 260px;
+    border-radius: 10px;
+    background-color: #1DA1F2; 
+    color: white;
+}
+.title {
+    display: inline-block;
+}
+
+.image {
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+}

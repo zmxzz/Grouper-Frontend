@@ -4,8 +4,8 @@
 <div mat-dialog-content>
     <!-- Activity Name -->
     <mat-form-field class="block">
-        <input required matInput [formControl]="activityName" placeholder="Activity Name">
-        <mat-error *ngIf="activityName.invalid">You must enter a value</mat-error>
+        <input required matInput [(ngModel)]="activityName" placeholder="Activity Name">
+        <mat-error *ngIf="!isValidInput(activityName)">You must enter a value</mat-error>
     </mat-form-field>
     <!-- Activity Introduction -->
     <mat-form-field class="block">
@@ -18,35 +18,57 @@
     <!-- Activity Year -->
     <mat-form-field class="one-third-container">
         <mat-select required placeholder="Year" [(ngModel)]="year">
-            <mat-option value="" *ngFor="let each of constants.years">{{ each }}</mat-option>
+            <mat-option *ngFor="let each of inputOptionService.getYears()" [value]="each">{{ each }}</mat-option>
         </mat-select>
     </mat-form-field>
     <!-- Activity Month -->
     <mat-form-field class="one-third-container">
         <mat-select required placeholder="Month" [(ngModel)]="month">
-            <mat-option value="" *ngFor="let each of constants.months">{{ each }}</mat-option>
+            <mat-option *ngFor="let each of inputOptionService.getMonths()" [value]="each">{{ each }}</mat-option>
         </mat-select>
     </mat-form-field>
     <!-- Activity Day -->
     <mat-form-field class="one-third-container">
         <mat-select required placeholder="Day" [(ngModel)]="day">
-            <mat-option value="" *ngFor="let each of constants.days">{{ each }}</mat-option>
+            <mat-option *ngFor="let each of inputOptionService.getDays(year, month)" [value]="each">{{ each }}</mat-option>
         </mat-select>
     </mat-form-field>
     <!-- Activity Hour and Minutes -->
     <mat-form-field class="one-third-container">
         <mat-select required placeholder="Hour" [(ngModel)]="hour">
-            <mat-option value="" *ngFor="let each of constants.hours">{{ each }}</mat-option>
+            <mat-option *ngFor="let each of inputOptionService.getHours()" [value]="each">{{ each }}</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field class="one-third-container">
         <mat-select required placeholder="Minute" [(ngModel)]="minute">
-            <mat-option value="" *ngFor="let each of constants.minutes">{{ each }}</mat-option>
+            <mat-option *ngFor="let each of inputOptionService.getMinutes()" [value]="each">{{ each }}</mat-option>
         </mat-select>
     </mat-form-field>
     <!-- Top Are Activity times -->
+    <!-- Below Are Activity Location -->
+    <mat-form-field style="width: 40%; display: inline-block;">
+        <mat-select required placeholder="State" [(ngModel)]="state">
+            <mat-option *ngFor="let each of inputOptionService.getStates()" [value]="each">{{ each }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!isValidInput(state)">You must select a state</mat-error>
+    </mat-form-field>
+    <!-- City -->
+    <mat-form-field style="width: 40%; margin-left: 10%; display: inline-block;">
+        <input required matInput [(ngModel)]="city" placeholder="City">
+        <mat-error *ngIf="!isValidInput(city)">You must enter a city</mat-error>
+    </mat-form-field>
+    <!-- Address -->
+    <mat-form-field class="block">
+        <input required matInput [(ngModel)]="address" placeholder="Address">
+        <mat-error *ngIf="!isValidInput(address)">You must enter address</mat-error>
+    </mat-form-field>
+    <!-- Group Size -->
+    <mat-form-field class="block">
+        <input required matInput [formControl]="groupSize" placeholder="Group Size">
+        <mat-error *ngIf="groupSize.invalid">{{ getGroupSizeError() }}</mat-error>
+    </mat-form-field>
     <div mat-dialog-content>
-        <button mat-button (click)="onNoClick()">No Thanks</button>
-        <button mat-button [mat-dialog-close]="animal" cdkFocusInitial>Ok</button>
+        <button mat-button (click)="onCancelClick()" style="background-color: #E6ECF0">Cancel</button>
+        <button mat-button (click)="postActivity()" style="margin-left: 65%; background-color: #1DA1F2;">Post</button>
     </div>
 </div>
