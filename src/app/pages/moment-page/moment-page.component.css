@@ -8,7 +8,7 @@
 
 
 @media (min-width: 0px) {
-    .activity-container {
+    .moment-container {
         visibility: hidden;
     }
     .friend-suggestion-container {
@@ -17,7 +17,7 @@
 }
 
 @media (min-width: 1000px) {
-    .activity-container {
+    .moment-container {
         display: inline-block;
         margin: 1% auto auto 2%;
         width: 600px;

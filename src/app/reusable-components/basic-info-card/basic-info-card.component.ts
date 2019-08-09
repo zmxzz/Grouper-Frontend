@@ -13,6 +13,9 @@ export class BasicInfoCardComponent implements OnInit {
     userInfo: object;
     fullname: string;
     username: string;
+    friendCount: number;
+    activityCount: number;
+    momentCount: number;
 
     ngOnInit() {
         // Initialize user's basic information
@@ -26,6 +29,9 @@ export class BasicInfoCardComponent implements OnInit {
             this.userInfo['firstname'] = this.userInfo['firstname'].length === 0 ? 'N/A' : this.userInfo['firstname'];
             this.fullname = this.userInfo['firstname'] + ' ' + this.userInfo['lastname'];
             this.username = '@' + this.userInfo['username'];
+            this.friendCount = this.userInfo['friendCount'];
+            this.activityCount = this.userInfo['activityCount'];
+            this.momentCount = this.userInfo['momentCount'];
             localStorage.setItem('userId', this.userInfo['_id']);
         } catch (error) {
             console.log(error);

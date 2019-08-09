@@ -28,7 +28,6 @@ export class UserService {
              })
             .subscribe(
                 (result) => {
-                    console.log(result);
                     localStorage.setItem('grouperUserToken', result); // Set up user token if logged in
                     localStorage.setItem('lastLogin', new Date().toString()); // Set up last login day
                     resolve(result);
@@ -69,6 +68,23 @@ export class UserService {
         return getUserBasicInformation;
     }
 
+    // Get user's firstname lastname  and username by id
+    async getUserBasicInformationById(userId: string): Promise<object> {
+        let getUserBasicInformationById = new Promise<object>((resolve, reject) => {
+            let params = new HttpParams().set('userId', userId);
+            this.http.get(this.serverAddress + '/user/infoById', {params: params})
+            .subscribe(
+                (result) => {
+                    resolve(result);
+                },
+                (error) => {
+                    reject(error);
+                }
+            );
+        });
+        return getUserBasicInformationById;
+    }
+
     // Get user's friends' ids
     async getFriendList(): Promise<string[]> {
         let getFriendList = new Promise<string[]>((resolve, reject) => {
@@ -101,7 +117,7 @@ export class UserService {
         let lastLoginDate = localStorage.getItem('lastLogin');
         return grouperUserToken !== null && 
         grouperUserToken !== '' &&
-        lastLoginDate !==null &&
+        lastLoginDate !== null &&
         (new Date().getTime() - new Date(lastLoginDate).getTime()) < (3600 * 24 * 1000);  
     }
 
@@ -165,7 +181,13 @@ export class UserService {
             this.http.get(this.serverAddress + '/user/friendSuggestionList', options)
             .subscribe(
                 (result) => {
-                    resolve(JSON.parse(result));
+                    // If there is a problem with result format, reject with error.
+                    try {
+                        resolve(JSON.parse(result));
+                    } catch (error) {
+                        console.log(error)
+                        reject(error);
+                    }
                 },
                 (error) => {
                     reject(error);
@@ -173,6 +195,30 @@ export class UserService {
             );
         });
         return getFriendSuggestionList;
+    }
+
+    // Send Friend Request
+    async sendFriendRequest(userId: string): Promise<void> {
+        let sendFriendRequest = new Promise<void>((resolve, reject) => {
+            // Set up headers, bodies and options
+            let headers = new HttpHeaders().set('Authorization', localStorage.getItem('grouperUserToken'));
+            let body = { userId: userId };
+            let options = {
+                headers: headers,
+                responseType: 'text' as 'text'
+            };
+            // Post http request
+            this.http.post(this.serverAddress + '/user/sendFriendRequest', body, options)
+            .subscribe(
+                (result) => {
+                    resolve();
+                },
+                (error) => {
+                    reject(error);
+                }
+            );
+        });
+        return sendFriendRequest;
     }
     
 }

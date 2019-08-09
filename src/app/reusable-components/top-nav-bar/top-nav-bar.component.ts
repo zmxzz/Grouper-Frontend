@@ -6,8 +6,8 @@ import { MomentPostDialogComponent } from '../moment-post-dialog/moment-post-dia
 
 @Component({
     selector: 'app-top-nav-bar',
-    templateUrl: './top-nav-bar.html',
-    styleUrls: ['./top-nav-bar.css', '../../app.component.css']
+    templateUrl: './top-nav-bar.component.html',
+    styleUrls: ['./top-nav-bar.component.css', '../../app.component.css']
 })
 export class TopNavBarComponent {
     constructor(
@@ -31,6 +31,10 @@ export class TopNavBarComponent {
       this.dialog.open(MomentPostDialogComponent,  {
         width: '500px'
       });
+    }
+
+    logout(): void {
+      localStorage.removeItem('grouperUserToken');
     }
 
 }

@@ -4,7 +4,9 @@
     <div *ngIf="selectedPage==='home'" class="content">
         <app-home-page></app-home-page>
     </div>
-    <div *ngIf="selectedPage==='moments'" class="content">Moments</div>
+    <div *ngIf="selectedPage==='moments'" class="content">
+        <app-moment-page></app-moment-page>
+    </div>
     <div *ngIf="selectedPage==='notifications'" class="content">Notifications</div>
     <div *ngIf="selectedPage==='messages'" class="content">Messages</div>
 </ng-container>

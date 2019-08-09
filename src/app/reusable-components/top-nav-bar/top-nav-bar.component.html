@@ -39,9 +39,7 @@
                 <div ngbDropdown>
                     <button class="btn dropdown-toggle-split" ngbDropdownToggle><i class="material-icons row-icon">arrow_drop_down</i></button>
                     <div class="dropdown-menu" ngbDropdownMenu>
-                    <button ngbDropdownItem>One</button>
-                    <button ngbDropdownItem>Two</button>
-                    <button ngbDropdownItem>Four!</button>
+                    <button ngbDropdownItem (click)="logout()">Logout</button>
                     </div>
                 </div>
             </div>

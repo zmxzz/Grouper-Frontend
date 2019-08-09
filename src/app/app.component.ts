@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedPage = 'home';
+    this.selectedPage = 'moments';
   }
 
   selectedPage: string;

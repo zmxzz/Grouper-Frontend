@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class CommunicateService {
     navigationPageSubject = new BehaviorSubject<string>(null);
     removeActivitySubject = new BehaviorSubject<string>(null);
+    removeSuggestionSubject = new BehaviorSubject<string>(null);
     postActivitySubject = new BehaviorSubject<object>(null);
 
     postActivity(activity: object): void {
@@ -29,6 +30,14 @@ export class CommunicateService {
     }
 
     getPage(): Observable<string> {
-        return this.navigationPageSubject.asObservable();
+      return this.navigationPageSubject.asObservable();
+    }
+
+    getRemoveSuggestion(): Observable<string> {
+      return this.removeSuggestionSubject.asObservable();
+    }
+
+    removeSuggestion(userId: string): void {
+      this.removeSuggestionSubject.next(userId);
     }
 }

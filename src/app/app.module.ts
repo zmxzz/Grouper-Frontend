@@ -32,6 +32,9 @@ import { ObjectBuilderService } from '../service/object-builder.service';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './pages/index-page/index-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { MomentPageComponent } from './pages/moment-page/moment-page.component';
+import { MomentBoxComponent } from './reusable-components/moment-box/moment-box.component';
+import { MomentCardComponent } from './reusable-components/moment-card/moment-card.component';
 import { TopNavBarComponent } from './reusable-components/top-nav-bar/top-nav-bar.component';
 import { ActivityBoxComponent } from './reusable-components/activity-box/activity-box.component';
 import { ActivityCardComponent} from './reusable-components/activity-card/activity-card.component';
@@ -46,7 +49,10 @@ import { FriendSuggestionCardComponent } from './reusable-components/friend-sugg
     AppComponent,
     IndexComponent,
     HomePageComponent,
+    MomentPageComponent,
+    MomentCardComponent,
     TopNavBarComponent,
+    MomentBoxComponent,
     ActivityBoxComponent,
     ActivityCardComponent,
     BasicInfoCardComponent,
