@@ -221,4 +221,11 @@ export class UserService {
         return sendFriendRequest;
     }
     
+    // Like moment post
+    async likeMoment(momentId: string): Promise<void> {
+        let likeMoment = new Promise((resolve, reject) => {
+            
+        });
+    }
+
 }

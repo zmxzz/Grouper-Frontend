@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Twitter-Client": {
+    "Grouper-Client": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Twitter-Client",
+            "outputPath": "dist/Grouper-Client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Twitter-Client:build"
+            "browserTarget": "Grouper-Client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Twitter-Client:build:production"
+              "browserTarget": "Grouper-Client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Twitter-Client:build"
+            "browserTarget": "Grouper-Client:build"
           }
         },
         "test": {
@@ -105,7 +105,7 @@
         }
       }
     },
-    "Twitter-Client-e2e": {
+    "Grouper-Client-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -114,11 +114,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Twitter-Client:serve"
+            "devServerTarget": "Grouper-Client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Twitter-Client:serve:production"
+              "devServerTarget": "Grouper-Client:serve:production"
             }
           }
         },
@@ -134,5 +134,5 @@
       }
     }
   },
-  "defaultProject": "Twitter-Client"
+  "defaultProject": "Grouper-Client"
 }

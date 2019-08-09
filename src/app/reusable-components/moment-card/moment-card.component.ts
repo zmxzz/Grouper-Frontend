@@ -38,7 +38,7 @@ export class MomentCardComponent implements OnInit {
     }
 
     async retrieveFiles() {
-        // Read possible images
+        // Read possible image blobs, display them by creating image from it
         let retrieveFiles: Promise<Blob>[] = [];
         for (let i = 0; i < this.momentInfo.images.length; i++) {
             retrieveFiles.push(this.fileService.downloadFile(this.momentInfo.images[i]))
@@ -52,6 +52,11 @@ export class MomentCardComponent implements OnInit {
         } catch (error) {
             console.log(error);   
         }
+    }
+
+    // Like a moment post
+    async like() {
+        
     }
 
     hasLiked(): boolean {
