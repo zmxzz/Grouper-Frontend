@@ -24,6 +24,7 @@ export class CommentPostDialogComponent implements OnInit {
         try {
             let commentId = await this.commentService.postComment(this.momentInfo['_id'], this.comment);
             this.momentInfo['comments'].push(commentId);
+            this.comment = '';
         } catch (error) {
         }
     }

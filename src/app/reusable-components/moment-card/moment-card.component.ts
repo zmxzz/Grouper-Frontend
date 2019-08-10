@@ -58,8 +58,8 @@ export class MomentCardComponent implements OnInit {
     // Like a moment post
     async like() {
         // If not success, remove user from the like list
+        this.momentInfo.likes.push(localStorage.getItem('userId'));
         try {
-            this.momentInfo.likes.push(localStorage.getItem('userId'));
             await this.userService.likeMoment(this.momentInfo._id);            
         } catch (error) {
             this.momentInfo.likes = this.momentInfo.likes.filter((value) => {
@@ -71,10 +71,10 @@ export class MomentCardComponent implements OnInit {
     // Unlike a moment post
     async unlike() {
         // If not success, put user back to the likes list
+        this.momentInfo.likes = this.momentInfo.likes.filter((value) => {
+            value !== localStorage.getItem('userId');
+        });
         try {
-            this.momentInfo.likes = this.momentInfo.likes.filter((value) => {
-                value !== localStorage.getItem('userId');
-            });
             await this.userService.unlikeMoment(this.momentInfo._id);
         } catch (error) {
             this.momentInfo.like.push(localStorage.getItem('userId'));

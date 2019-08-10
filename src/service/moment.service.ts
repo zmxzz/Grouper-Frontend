@@ -15,15 +15,19 @@ export class MomentService {
         let headers = new HttpHeaders();
         headers = headers.set('Authorization', localStorage.getItem('grouperUserToken'));
         headers = headers.set("Content-Type", "application/json");
+        let options = {
+            headers: headers
+        };
         // Initialize promise
         let postMoment = new Promise<object>((resolve, reject) => {
             // Make post request
-            this.http.post(this.serverAddress + '/user/postMoment', moment, { headers})
+            this.http.post(this.serverAddress + '/user/postMoment', moment, options)
             .subscribe(
                 (result) => {
                     resolve(result);
                 },
                 (error) => {
+                    console.log('Post Moment Error: ' + error);
                     console.log(error);
                     reject(error);
                 }

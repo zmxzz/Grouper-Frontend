@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MomentService } from 'src/service/moment.service';
 import { UserService } from 'src/service/user.service';
+import { CommunicateService } from 'src/service/communicate.service';
 
 @Component({
     selector: 'app-moment-box',
@@ -8,7 +9,16 @@ import { UserService } from 'src/service/user.service';
     styleUrls: ['./moment-box.component.css', '../../app.component.css']
 })
 export class MomentBoxComponent implements OnInit{
-    constructor(private userService: UserService , private momentService: MomentService) { }
+    constructor(private userService: UserService , private momentService: MomentService, private communicateService: CommunicateService) {
+        this.communicateService.getNewMoment()
+        .subscribe(
+            (moment) => {
+                if (moment !== null && moment !== undefined) {
+                    this.momentList = [moment].concat(this.momentList);
+                }
+            }
+        )
+    }
 
     momentList: object[] = [];
 

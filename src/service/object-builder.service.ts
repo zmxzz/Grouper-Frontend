@@ -5,8 +5,8 @@ export class ObjectBuilderService {
     buildMoment(fileType: string, momentContent: string, fileUrls: string[]): object {
         let moment = {
             content: momentContent,
-            images: fileType === 'image' ? fileUrls : [],
-            video: fileType === 'video' ? fileUrls[0] : ''
+            images: fileUrls,
+            video: ''
         };
         return moment;
     }

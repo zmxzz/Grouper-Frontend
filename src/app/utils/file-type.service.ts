@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 export class FileTypeService {
     private uploadFiles: object[] = [];
     private uploadFileUrls: string[] = [];
-    private acceptTypes: string[] = ['.jpg', '.png', '.jpeg', '.mp4']; // When nothing is uploaded, used can upload, image, video
     private acceptImage: string[] = ['.jpg', '.png', '.jpeg'];        // If moment contains image, no video is allowed
     private acceptNothing: string[] = ['.invalidFile'];                            // If moment contains nine images or one video, nothing more can be uploaded
     private fileType: string = null;                                 // File type denotes the file type is getting uploaded, [null, 'image', 'video']                                        
@@ -12,20 +11,7 @@ export class FileTypeService {
 
     // Helper function to decide accept file type
     getAcceptTypes(): string[] {
-        if (this.uploadFiles.length === 0) {
-            return this.acceptTypes;
-        }
-        if ((this.fileType === 'video' && this.uploadFiles.length === 1) || (this.fileType === 'image' && this.uploadFiles.length === 9)) {
-            return this.acceptNothing;
-        }
-        else {
-            return this.acceptImage;
-        }
-    }
-
-    // Determine the file type uploaded
-    readFileType(uploadedFile: object): string {
-        return uploadedFile['type'].split('/')[0];
+        return this.uploadFiles.length === 1 ? this.acceptNothing : this.acceptImage;
     }
 
     // Return the file type uploaded
@@ -37,7 +23,6 @@ export class FileTypeService {
     uploadFile(uploadedFile: object): void {
         this.readFile(uploadedFile);
         this.uploadFiles.push(uploadedFile);
-        this.fileType = this.readFileType(uploadedFile);
     }
 
     // Read File as data url
@@ -56,12 +41,7 @@ export class FileTypeService {
 
     // Get uploaded file urls
     getUploadedFileUrls(): string[] {
-        return this.fileType === 'image' ? this.uploadFileUrls : [];
-    }
-
-    // Get video name
-    getUploadedVideoName(): string {
-        return this.fileType === 'video' ? this.uploadFiles[0]['name'] : '';
+        return this.uploadFileUrls;
     }
 
     // Destroy

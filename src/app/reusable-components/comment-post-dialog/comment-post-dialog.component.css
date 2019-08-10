@@ -78,4 +78,15 @@
     border-style: solid none solid none;
     border-color: #E6ECF0;
     border-width: 1px;
+    width: 100%;
+}
+
+.title {
+    margin-bottom: -15px;
+}
+
+.comment-container {
+    width: 100%;
+    max-height: 300px;
+    overflow: scroll;
 }

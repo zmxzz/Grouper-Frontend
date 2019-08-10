@@ -13,13 +13,19 @@ export class FileService {
         headers.set('Authorization', localStorage.getItem('grouperUserToken'));
         headers.set('Content-Type', 'multipart/form-data');
         formData.append('file', file);
+        let options = {
+            headers: headers,
+            responseType: 'text' as 'text'
+        };
         let uploadFile = new Promise<string>((resolve, reject) => {
-            this.http.post(ServerConfig.serverAddress + '/file/upload', formData, { headers })
+            this.http.post(ServerConfig.serverAddress + '/file/upload', formData, options)
             .subscribe(
                 res => {
-                    resolve(res['result']);
+                    resolve(res);
                 },
                 error => {
+                    console.log('Fail to upload file ');
+                    console.log(error);
                     reject(error);
                 }
             );

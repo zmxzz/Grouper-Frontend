@@ -10,5 +10,4 @@
     <button mat-icon-button class="buttons-under-form"><mat-icon>location_on</mat-icon></button>
     <button mat-flat-button class="buttons-under-form post-moment-button" (click)="uploadFile()">Post</button>
     <img class="image" *ngFor="let eachFile of fileTypeService.getUploadedFileUrls()" [src]="eachFile"/>   
-    <mat-label>{{ fileTypeService.getUploadedVideoName() }}</mat-label>
 </div>

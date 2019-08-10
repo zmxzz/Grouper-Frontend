@@ -18,8 +18,8 @@
             <div class="numbers">{{ momentInfo.comments.length }}</div>
         </div>
         <div class="button-box">
-            <button mat-icon-button class="buttons-under-form">
-                    <i *ngIf="!hasLiked()" class="material-icons-outlined icon" (click)="like()">thumb_up</i>
+            <button mat-icon-button class="buttons-under-form" (click)="hasLiked() ? unlike() : like()">
+                    <i *ngIf="!hasLiked()" class="material-icons-outlined icon">thumb_up</i>
                     <i *ngIf="hasLiked()" class="material-icons icon" (click)="unlike()">thumb_up</i>
                 </button>
                 <div class="numbers">{{ momentInfo.likes.length }}</div>

@@ -8,6 +8,7 @@ export class CommunicateService {
     removeActivitySubject = new BehaviorSubject<string>(null);
     removeSuggestionSubject = new BehaviorSubject<string>(null);
     postActivitySubject = new BehaviorSubject<object>(null);
+    postMomentSubject = new BehaviorSubject<object>(null);
 
     postActivity(activity: object): void {
       this.postActivitySubject.next(activity);
@@ -15,6 +16,14 @@ export class CommunicateService {
 
     getNewActivity(): Observable<object> {
       return this.postActivitySubject.asObservable();
+    }
+
+    postMoment(moment: object): void {
+      this.postMomentSubject.next(moment);
+    }
+
+    getNewMoment(): Observable<object> {
+      return this.postMomentSubject.asObservable();
     }
 
     removeActivity(activityId: string): void {

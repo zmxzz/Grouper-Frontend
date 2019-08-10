@@ -4,6 +4,7 @@ import { FileTypeService } from '../../utils/file-type.service';
 import { FileService } from '../../../service/file.service';
 import { ObjectBuilderService } from '../../../service/object-builder.service';
 import { MomentService } from '../../../service/moment.service';
+import { CommunicateService } from 'src/service/communicate.service';
 
 @Component({
     selector: 'app-moment-post-dialog',
@@ -19,7 +20,8 @@ export class MomentPostDialogComponent {
         private fileService: FileService,
         private momentService: MomentService,
         private fileTypeService: FileTypeService,
-        private objectBuilderService: ObjectBuilderService
+        private objectBuilderService: ObjectBuilderService,
+        private communicateService: CommunicateService
     ) {}
 
     currFile = '';
@@ -39,22 +41,23 @@ export class MomentPostDialogComponent {
     async uploadFile() {
         this.dialogRef.close();
         let files = this.fileTypeService.getUploadedFiles();
-        let fileUrls: string[] = [];
+        let filename: string[] = [];
         // Upload all the files into file server and get its url
         for (let i: number = 0; i < files.length; i++) {
             try {
                 let currUrl: string = await this.fileService.uploadFile(files[i]);
-                fileUrls.push(currUrl);
+                filename.push(currUrl);
+                console.log(i);
             } catch (error) {
-                console.log('Fail to upload file ' + error);
             }
         }
         // Initialize moment info
-        let momentInfo = this.objectBuilderService.buildMoment(this.fileTypeService.getFileType(), this.momentContent, fileUrls);
+        let momentInfo = this.objectBuilderService.buildMoment('images', this.momentContent, filename);
         try {
-            await this.momentService.postMoment(momentInfo);
+            let moment = await this.momentService.postMoment(momentInfo);
+            console.log(moment);
+            this.communicateService.postMoment(moment);
         } catch (error) {
-            alert('Fail to post moment');
             console.log('Fail to post moment: ' + error);
         }
         this.fileTypeService.destroy();
