@@ -1,0 +1,81 @@
+.buttons-under-form {
+    color: #1DA1F2;
+    margin-top: 5px;
+    display: inline-block;
+}
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+.post-moment-button {
+    margin-left: 260px;
+    border-radius: 10px;
+    background-color: #1DA1F2; 
+    color: white;
+}
+
+.image {
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+}
+
+.name {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.bordered-box {
+    border: 1px red solid;
+}
+
+.username {
+    color: #7E8C99;
+    display: inline-block;
+}
+
+.middle {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: auto 5px auto auto;
+}
+
+.form-control {
+    width: 80%;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.post {
+    margin-left: 15px;
+    border-radius: 20px;
+    outline: none;
+    background-color: #1DA1F2;
+    color: white;
+}
+
+.bar {
+    height: 50px;
+    width: 100%;
+}
+
+.header {
+    min-width: 500px; 
+    padding-top: 20px; 
+    padding-bottom: 10px;
+}
+
+.comment-header {
+    padding-top: 20px; 
+    padding-bottom: 10px;
+}
+
+.half-bordered-box {
+    border-style: solid none solid none;
+    border-color: #E6ECF0;
+    border-width: 1px;
+}

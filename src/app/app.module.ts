@@ -24,6 +24,7 @@ import { FileTypeService } from './utils/file-type.service';
 
 import { FileService } from '../service/file.service';
 import { UserService } from '../service/user.service';
+import { CommentService} from '../service/comment.service';
 import { MomentService } from '../service/moment.service';
 import { ActivityService } from '../service/activity.service'; 
 import { CommunicateService } from '../service/communicate.service';
@@ -39,6 +40,8 @@ import { TopNavBarComponent } from './reusable-components/top-nav-bar/top-nav-ba
 import { ActivityBoxComponent } from './reusable-components/activity-box/activity-box.component';
 import { ActivityCardComponent} from './reusable-components/activity-card/activity-card.component';
 import { BasicInfoCardComponent } from './reusable-components/basic-info-card/basic-info-card.component';
+import { DialogCommentBarComponent } from './reusable-components/comment-post-dialog/dialog-comment-bar.component';
+import { CommentPostDialogComponent } from './reusable-components/comment-post-dialog/comment-post-dialog.component';
 import { MomentPostDialogComponent } from './reusable-components/moment-post-dialog/moment-post-dialog.component';
 import { ActivityPostDialogComponent } from './reusable-components/activity-post-dialog/activity-post-dialog.component';
 import { FriendSuggestionBoxComponent } from './reusable-components/friend-suggestion-box/friend-suggestion-box.component';
@@ -56,6 +59,8 @@ import { FriendSuggestionCardComponent } from './reusable-components/friend-sugg
     ActivityBoxComponent,
     ActivityCardComponent,
     BasicInfoCardComponent,
+    DialogCommentBarComponent,
+    CommentPostDialogComponent,
     MomentPostDialogComponent,
     ActivityPostDialogComponent,
     FriendSuggestionBoxComponent,
@@ -84,14 +89,16 @@ import { FriendSuggestionCardComponent } from './reusable-components/friend-sugg
     HttpClientModule
   ],
   entryComponents: [
+    CommentPostDialogComponent,
     ActivityPostDialogComponent,
-    MomentPostDialogComponent
+    MomentPostDialogComponent,
   ],
   providers: [
     UserService,
     FileService,
     StateService,
     MomentService,
+    CommentService,
     ActivityService,
     FileTypeService,
     CommunicateService,

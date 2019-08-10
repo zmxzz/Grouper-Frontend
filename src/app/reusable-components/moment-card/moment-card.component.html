@@ -14,7 +14,7 @@
     </div>
     <div class="bar">
         <div class="button-box">
-            <button mat-icon-button class="buttons-under-form"><mat-icon class="icon">chat_bubble_outline</mat-icon></button>
+            <button #changeButton mat-icon-button class="buttons-under-form" (click)="comment()"><mat-icon class="icon">chat_bubble_outline</mat-icon></button>
             <div class="numbers">{{ momentInfo.comments.length }}</div>
         </div>
         <div class="button-box">

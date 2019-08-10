@@ -1,0 +1,20 @@
+<!-- Title -->
+<button mat-icon-button class="title" tabindex="-1" style="float: right;" (click)="onCancelClick()"><mat-icon>close</mat-icon></button>
+<!-- Form Fields -->
+<div mat-dialog-content class="half-bordered-box header">
+    <div class="middle name" >{{ data.firstname }} {{ data.lastname }}</div>
+    <div class="middle username">@{{ data.username }}</div>
+    <div class="grouper-content half">
+        <mat-label>
+            {{ momentInfo.content }}
+        </mat-label>
+    </div>
+    <div class="bar">
+        <input matInput class="form-control middle" rows="0" placeholder="Moment you reply" [(ngModel)]="comment">
+        <button mat-button class="post middle" (click)="postComment()">Post</button>
+    </div>
+</div>
+
+<div mat-dialog-content *ngFor="let comment of momentInfo.comments" class="half-bordered-box">
+    <dialog-comment-bar [commentId]="comment"></dialog-comment-bar>
+</div>

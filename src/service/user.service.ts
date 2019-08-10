@@ -200,9 +200,10 @@ export class UserService {
     // Send Friend Request
     async sendFriendRequest(userId: string): Promise<void> {
         let sendFriendRequest = new Promise<void>((resolve, reject) => {
-            // Set up headers, bodies and options
-            let headers = new HttpHeaders().set('Authorization', localStorage.getItem('grouperUserToken'));
-            let body = { userId: userId };
+            // Set up headers, body and options
+            let headers = new HttpHeaders();
+            headers = headers.set('Authorization', localStorage.getItem('grouperUserToken'));
+            headers = headers.set('Content-Type', 'application/json');            let body = { userId: userId };
             let options = {
                 headers: headers,
                 responseType: 'text' as 'text'
@@ -223,9 +224,53 @@ export class UserService {
     
     // Like moment post
     async likeMoment(momentId: string): Promise<void> {
-        let likeMoment = new Promise((resolve, reject) => {
-            
+        let likeMoment = new Promise<void>((resolve, reject) => {
+            // Set up headers, body, and options
+            let headers = new HttpHeaders();
+            headers = headers.set('Authorization', localStorage.getItem('grouperUserToken'));
+            headers = headers.set('Content-Type', 'application/json');            let options = {
+                headers: headers,
+                responseType: 'text' as 'text'
+            };
+            let body = { momentId: momentId };
+            // Post http request
+            this.http.post(this.serverAddress + '/user/like', body, options)
+            .subscribe(
+                (result) => {
+                    resolve();
+                },
+                (error) => {
+                    console.log('Like moment error: ' + error);
+                    reject(error);
+                }
+            );
         });
+        return likeMoment;
+    }
+
+    async unlikeMoment(momentId: string): Promise<void> {
+        let unlikeMoment = new Promise<void>((resolve, reject) => {
+            // Set up headers. body and options
+            let headers = new HttpHeaders();
+            headers = headers.set('Authorization', localStorage.getItem('grouperUserToken'));
+            headers = headers.set('Content-Type', 'application/json');
+            let body = { momentId: momentId };
+            let options = {
+                headers: headers,
+                responseType: 'text' as 'text'
+            };
+            // Post http request
+            this.http.post(this.serverAddress + '/user/unlike', body, options)
+            .subscribe(
+                (result) => {
+                    resolve();
+                },
+                (error) => {
+                    reject(error);
+                }
+            );
+        });
+        return unlikeMoment;
     }
 
 }

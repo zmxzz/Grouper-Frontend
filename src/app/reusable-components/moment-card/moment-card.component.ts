@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FileService } from 'src/service/file.service';
 import { UserService } from 'src/service/user.service';
+import { CommentPostDialogComponent } from '../comment-post-dialog/comment-post-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
     selector: 'app-moment-card',
@@ -8,8 +10,9 @@ import { UserService } from 'src/service/user.service';
     styleUrls: ['./moment-card.component.css']
 })
 export class MomentCardComponent implements OnInit {
-    constructor(private userService: UserService,private fileService: FileService) { }
+    constructor(private userService: UserService,private fileService: FileService, private dialog: MatDialog) { }
 
+    @ViewChild('changeButton', {static: false}) private changeButton: ElementRef; // Used to get rid of selected color comment when closed commentPostDialog
     @Input() momentInfo;
     images: any[] = [];
     urls = [];
@@ -27,7 +30,6 @@ export class MomentCardComponent implements OnInit {
         try {
             // Try retreive user's names, assign it to values
             let userInfo = await this.userService.getUserBasicInformationById(this.momentInfo.user);
-            console.log(userInfo);
             this.firstname = userInfo['firstname'];
             this.lastname = userInfo['lastname'];
             this.username = userInfo['username'];
@@ -45,7 +47,6 @@ export class MomentCardComponent implements OnInit {
         }
         try {
             this.images = await Promise.all(retrieveFiles);
-            console.log(this.images);
             for (let i = 0; i < this.images.length; i++) {
                 this.createImageFromBlob(this.images[i]);
             }
@@ -56,7 +57,40 @@ export class MomentCardComponent implements OnInit {
 
     // Like a moment post
     async like() {
-        
+        // If not success, remove user from the like list
+        try {
+            this.momentInfo.likes.push(localStorage.getItem('userId'));
+            await this.userService.likeMoment(this.momentInfo._id);            
+        } catch (error) {
+            this.momentInfo.likes = this.momentInfo.likes.filter((value) => {
+                value !== localStorage.getItem('userId');
+            });
+        }
+    }
+
+    // Unlike a moment post
+    async unlike() {
+        // If not success, put user back to the likes list
+        try {
+            this.momentInfo.likes = this.momentInfo.likes.filter((value) => {
+                value !== localStorage.getItem('userId');
+            });
+            await this.userService.unlikeMoment(this.momentInfo._id);
+        } catch (error) {
+            this.momentInfo.like.push(localStorage.getItem('userId'));
+        }
+    }
+    // Open a comment dialog
+    comment() {
+        let dialogRef = this.dialog.open(CommentPostDialogComponent, {
+            width: '500px',
+            data: {momentInfo: this.momentInfo, firstname: this.firstname, lastname: this.lastname, username: this.username}
+        });
+          // After closed, get rid of the selected background color
+        dialogRef.afterClosed().subscribe((result) => {
+            this.changeButton['_elementRef'].nativeElement
+                .classList.remove('cdk-program-focused');
+        });
     }
 
     hasLiked(): boolean {
