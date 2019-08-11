@@ -1,0 +1,78 @@
+.card {
+    width: 100%;
+    padding: 0px 0px 15px 0px;
+}
+
+.title {
+    height: 40px;
+    width: 100%;
+    padding: 20px;
+}
+
+.name {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.username {
+    color: #7E8C99;
+    display: inline-block;
+}
+
+.grouper-content {
+    padding-left: 20px;
+}
+
+div.middle {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: auto 5px auto auto;
+}
+
+.bar {
+    height: 40px;
+    width: 100%;
+    padding-left: 420px;
+}
+
+.bordered-box {
+    border: 1px red solid;
+}
+
+.buttons-under-form {
+    display: inline-block;
+    outline: none;
+    margin-left: 10px;
+    color: white;
+}
+
+.icon {
+    color: #7E8C99;
+    font-weight: lighter;
+}
+
+.button-box {
+    display: inline-block;
+    height: 100%;
+    width: 80px;
+}
+
+.numbers {
+    margin-left: 5px; 
+    display: inline-block;
+    color: #7E8C99;
+}
+
+.left {
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.right {
+    float: right;
+    width: 200px;
+    height: 100%;
+}

@@ -22,4 +22,13 @@ export class IndexComponent {
             console.log(error);
         }
     }
+
+    async loginWithDemoAccount() {
+        try {
+            let user = await this.userService.login('lpantecost0', 'Mn6Is9tdF');
+            console.log(user);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }

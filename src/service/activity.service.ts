@@ -13,12 +13,13 @@ export class ActivityService {
     async postActivity(activity: object): Promise<object> {
         // Initialize headers
         let headers = new HttpHeaders();
+        headers = headers.set('Authorization', localStorage.getItem('grouperUserToken'));
+        headers = headers.set('Content-Type', 'application/json');
         const options = {
             headers: headers,
             responseType: 'text' as 'text'
         };
-        headers = headers.set('Authorization', localStorage.getItem('grouperUserToken'));
-        headers = headers.set('Content-Type', 'application/json');
+
         // Initialize promise
         let postActivity = new Promise<object>((resolve, reject) => {
             // Make post request
@@ -28,6 +29,7 @@ export class ActivityService {
                     resolve(JSON.parse(result));
                 },
                 (error) => {
+                    console.log('Post activity error: ');
                     console.log(error);
                     reject(error);
                 }

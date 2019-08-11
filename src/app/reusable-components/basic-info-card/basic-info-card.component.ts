@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from 'src/service/user.service';
+import { CommunicateService } from 'src/service/communicate.service';
 
 @Component({
     selector: 'app-basic-info-card',
@@ -8,7 +9,14 @@ import { UserService } from 'src/service/user.service';
 })
 export class BasicInfoCardComponent implements OnInit {
     // userService: communicate with backend to get information
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService, private communicateService: CommunicateService) {
+        this.getAcceptFriend = this.communicateService.getAcceptFriend()
+        .subscribe(
+            (userId) => {
+                this.friendCount++;
+            }
+        );
+    }
 
     userInfo: object;
     fullname: string;
@@ -16,11 +24,16 @@ export class BasicInfoCardComponent implements OnInit {
     friendCount: number;
     activityCount: number;
     momentCount: number;
+    getAcceptFriend: any;
 
     ngOnInit() {
         // Initialize user's basic information
         this.getUserInfo();
     }
+    //  ngOnDestroy() {
+    //      this.getAcceptFriend.unsubscribe();
+    //  }
+
 
     async getUserInfo() {
         try {
@@ -36,6 +49,18 @@ export class BasicInfoCardComponent implements OnInit {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    showMyEvent(): void {
+        this.communicateService.showMyEvent();
+    }
+
+    showMyMoment(): void {
+        this.communicateService.showMyMoment();
+    }
+
+    showMyFriend(): void {
+        this.communicateService.showMyFriend();
     }
     
 }

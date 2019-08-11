@@ -78,11 +78,90 @@ export class UserService {
                     resolve(result);
                 },
                 (error) => {
+                    console.log('Get user basic info by id error: ');
+                    console.log(error);
                     reject(error);
                 }
             );
         });
         return getUserBasicInformationById;
+    }
+
+    // Get user's friend request ids
+    async getFriendRequestList(): Promise<string[]> {
+        let getFriendList = new Promise<string[]>((resolve, reject) => {
+            let headers = new HttpHeaders().set('Authorization', localStorage.getItem('grouperUserToken'));
+            this.http.get(this.serverAddress + '/user/friendRequest', { headers: headers})
+            .subscribe(
+                (result: string[]) => {
+                    resolve(result);
+                },
+                (error) => {
+                    console.log('Get Friend Request List Error: ');
+                    console.log(error);
+                    reject(error);
+                }
+            );
+        });
+        return getFriendList;
+    }
+
+    // Accept user's friend request
+    async accpetFriendRequest(userId: string): Promise<void> {
+        let accpetFriendRequest = new Promise<void>((resolve, reject) => {
+            // Set up headers, body, options
+            let headers = new HttpHeaders();
+            headers = headers.set('Authorization', localStorage.getItem('grouperUserToken'));
+            headers = headers.set('Content-Type', 'application/json');
+            let body = {
+                userId: userId
+            };
+            let options = {
+                headers: headers,
+                responseType: 'text' as 'text'
+            };
+            this.http.post(this.serverAddress + '/user/acceptFriendRequest', body, options)
+            .subscribe(
+                (result) => {
+                    resolve();
+                },
+                (error) => {
+                    console.log('Accept friend request error: ');
+                    console.log(error);
+                    reject(error);
+                }
+            );
+        });
+        return accpetFriendRequest;
+    }
+
+    // Decline user's friend request
+    async declineFriendRequest(userId: string): Promise<void> {
+        let declineFriendRequest = new Promise<void>((resolve, reject) => {
+            // Set up headers, body, options
+            let headers = new HttpHeaders();
+            headers = headers.set('Authorization', localStorage.getItem('grouperUserToken'));
+            headers = headers.set('Content-Type', 'application/json');
+            let body = {
+                userId: userId
+            };
+            let options = {
+                headers: headers,
+                responseType: 'text' as 'text'
+            };
+            this.http.post(this.serverAddress + '/user/declineFriendRequest', body, options)
+            .subscribe(
+                (result) => {
+                    resolve();
+                },
+                (error) => {
+                    console.log('Decline friend request error: ');
+                    console.log(error);
+                    reject(error);
+                }
+            );
+        });
+        return declineFriendRequest;
     }
 
     // Get user's friends' ids

@@ -1,0 +1,2 @@
+<div class="title"><mat-label>{{ getTitle() }}</mat-label></div>
+<app-notification-card  *ngFor="let each of getList()" [request]="each" [isFriend]="isFriend()"></app-notification-card>

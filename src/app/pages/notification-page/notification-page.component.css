@@ -1,0 +1,39 @@
+.left-container {
+    display: inline-block;
+    height: 100%;
+    width: 280px;
+    margin: 1% auto auto 7%;
+    visibility: visible;
+}
+
+
+@media (min-width: 0px) {
+    .notification-container {
+        visibility: hidden;
+    }
+    .friend-suggestion-container {
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 1000px) {
+    .notification-container {
+        display: inline-block;
+        margin: 1% auto auto 2%;
+        width: 600px;
+        visibility: visible;
+        vertical-align: top;  
+    }
+}
+
+@media (min-width: 1200px) {
+    .friend-suggestion-container {
+        display: inline-block;
+        margin: 1% auto auto 2%;
+        width: 300px;
+        visibility: visible;
+        vertical-align: top;
+        background-color: white;
+    }
+}
+

@@ -1,12 +1,16 @@
 <app-index *ngIf="!isLoggedIn()"></app-index>
 <ng-container *ngIf="isLoggedIn()">
     <app-top-nav-bar *ngIf="isLoggedIn()"></app-top-nav-bar>
-    <div *ngIf="selectedPage==='home'" class="content">
+    <div *ngIf="selectedPage==='home' || selectedPage==='myHome'" class="content">
         <app-home-page></app-home-page>
     </div>
-    <div *ngIf="selectedPage==='moments'" class="content">
+    <div *ngIf="selectedPage==='moments' || selectedPage==='myMoment'" class="content">
         <app-moment-page></app-moment-page>
     </div>
-    <div *ngIf="selectedPage==='notifications'" class="content">Notifications</div>
-    <div *ngIf="selectedPage==='messages'" class="content">Messages</div>
+    <div *ngIf="selectedPage==='notifications' || selectedPage==='myFriend'" class="content">
+        <app-notification-page></app-notification-page>
+    </div>
+    <div *ngIf="selectedPage==='messages'" class="content">
+        <app-message-page></app-message-page>
+    </div>
 </ng-container>

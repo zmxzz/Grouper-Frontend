@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { UserService } from 'src/service/user.service';
 import { CommunicateService } from 'src/service/communicate.service';
 
@@ -7,9 +7,9 @@ import { CommunicateService } from 'src/service/communicate.service';
     templateUrl: './friend-suggestion-box.component.html',
     styleUrls: ['./friend-suggestion-box.component.css', '../../app.component.css']
 })
-export class FriendSuggestionBoxComponent {
+export class FriendSuggestionBoxComponent implements OnInit {
     constructor(private userService: UserService, private communicateService: CommunicateService) {
-        this.communicateService.getRemoveSuggestion()
+        this.getRemoveSuggestion = this.communicateService.getRemoveSuggestion()
         .subscribe(
             (userId) => {
                 this.userSuggestionList = this.userSuggestionList.filter((value, index, array) => {
@@ -23,7 +23,12 @@ export class FriendSuggestionBoxComponent {
         this.readSuggestionList();
     }
 
+    // ngOnDestroy() {
+    //     this.getRemoveSuggestion.unsubscribe();
+    // }
+
     userSuggestionList: object[] = [];
+    getRemoveSuggestion: any;
 
     // Get friend Suggestions from the server
     async readSuggestionList(): Promise<void> {

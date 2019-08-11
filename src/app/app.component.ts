@@ -8,30 +8,50 @@ import { CommunicateService } from '../service/communicate.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // Constructor with two service
-  // UserService: Service communicating with backend
-  // CommunicateService: Page control service
-  constructor(private userService: UserService, private communicateService: CommunicateService) {
-    this.communicateService.getPage()
-    .subscribe(nextPage => {
-      this.selectedPage = nextPage;
-    });
-  }
+    // Constructor with two service
+    // UserService: Service communicating with backend
+    // CommunicateService: Page control service
+    constructor(private userService: UserService, private communicateService: CommunicateService) {
+        this.communicateService.getPage()
+        .subscribe(nextPage => {
+            this.selectedPage = nextPage;
+            localStorage.setItem('currentGrouperPage', nextPage);
+        });
 
-  ngOnInit() {
-    this.selectedPage = 'moments';
-  }
+        this.communicateService.getShowMyEvent()
+        .subscribe(() => {
+            this.selectedPage = 'myHome';
+            localStorage.setItem('currentGrouperPage', 'myHome');
+        });
 
-  selectedPage: string;
+        this.communicateService.getShowMyMoment()
+        .subscribe(() => {
+            this.selectedPage = 'myMoment';
+            localStorage.setItem('currentGrouperPage', 'myMoment');
+        });
 
-  // returns true if the user is currently logged in
-  isLoggedIn(): boolean{
-    return this.userService.isLoggedIn();
-  }
+        this.communicateService.getShowMyFriend()
+        .subscribe(() => {
+            this.selectedPage = 'myFriend';
+            localStorage.setItem('currentGrouperPage', 'myFriend');
+        });
+    }
 
-  // Call logout function to destroy token
-  logout(): void {
-    this.userService.logout();
-  }
+    ngOnInit() {
+        this.selectedPage = 'home';
+        localStorage.setItem('currentGrouperPage', 'home');
+    }
+
+    selectedPage: string;
+
+    // returns true if the user is currently logged in
+    isLoggedIn(): boolean{
+        return this.userService.isLoggedIn();
+    }
+
+    // Call logout function to destroy token
+    logout(): void {
+        this.userService.logout();
+    }
 
 }

@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserService } from '../../../service/user.service'; 
-import { CommunicateService } from '../../../service/communicate.service';
+import { UserService } from 'src/service/user.service';
+import { CommunicateService } from 'src/service/communicate.service';
 import { StateService } from 'src/app/utils/state.service';
 import { ActivityService } from 'src/service/activity.service';
+
 @Component({
     selector: 'app-activity-card',
     templateUrl: './activity-card.component.html',
-    styleUrls: ['./activity-card.component.css', '../../app.component.css']
+    styleUrls: ['./activity-card.component.css', '../../../app.component.css']
 })
 export class ActivityCardComponent implements OnInit{
     constructor(private userService: UserService, private communicateService: CommunicateService, private stateService: StateService, private activityService: ActivityService) { }

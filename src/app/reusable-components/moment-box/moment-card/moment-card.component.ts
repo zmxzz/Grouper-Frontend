@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FileService } from 'src/service/file.service';
 import { UserService } from 'src/service/user.service';
-import { CommentPostDialogComponent } from '../comment-post-dialog/comment-post-dialog.component';
+import { CommentPostDialogComponent } from '../../comment-post-dialog/comment-post-dialog.component';
 import { MatDialog } from '@angular/material';
 
 @Component({

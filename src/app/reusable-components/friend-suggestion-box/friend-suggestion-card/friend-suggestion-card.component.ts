@@ -5,7 +5,7 @@ import { UserService } from 'src/service/user.service';
 @Component({
     selector: 'app-friend-suggestion-card',
     templateUrl: './friend-suggestion-card.component.html',
-    styleUrls: ['./friend-suggestion-card.component.css', '../../app.component.css']
+    styleUrls: ['./friend-suggestion-card.component.css', '../../../app.component.css']
 })
 export class FriendSuggestionCardComponent implements OnInit {
 

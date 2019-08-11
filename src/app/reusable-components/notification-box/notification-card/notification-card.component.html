@@ -1,0 +1,13 @@
+<mat-card class="card">
+    <div class="title">
+        <div class="middle name" >{{ firstname }} {{ lastname }}</div>
+        <div class="middle username">@{{ username }}</div>
+    </div>
+    <div class="grouper-content">Bio: {{ bio }}</div>
+    <div class="bar" *ngIf="!isFriend">
+        <div class="right">
+            <button mat-button class="buttons-under-form" style="background-color: #1DA1F2;" (click)="accept()">Accept</button>
+            <button mat-button class="buttons-under-form" style="background-color: #7E8C99;" (click)="decline()">Decline</button>
+        </div>
+    </div>
+</mat-card>

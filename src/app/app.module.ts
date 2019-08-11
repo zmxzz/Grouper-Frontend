@@ -34,30 +34,38 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './pages/index-page/index-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MomentPageComponent } from './pages/moment-page/moment-page.component';
+import { NotificationPageComponent } from './pages/notification-page/notification-page.component';
+import { MessagePageComponent } from './pages/message-page/message-page.component';
 import { MomentBoxComponent } from './reusable-components/moment-box/moment-box.component';
-import { MomentCardComponent } from './reusable-components/moment-card/moment-card.component';
+import { MomentCardComponent } from './reusable-components/moment-box/moment-card/moment-card.component';
 import { TopNavBarComponent } from './reusable-components/top-nav-bar/top-nav-bar.component';
 import { ActivityBoxComponent } from './reusable-components/activity-box/activity-box.component';
-import { ActivityCardComponent} from './reusable-components/activity-card/activity-card.component';
+import { ActivityCardComponent} from './reusable-components/activity-box/activity-card/activity-card.component';
+import { NotificationBoxComponent } from './reusable-components/notification-box/notification-box.component';
+import { NotificationCardComponent } from './reusable-components/notification-box/notification-card/notification-card.component';
 import { BasicInfoCardComponent } from './reusable-components/basic-info-card/basic-info-card.component';
 import { DialogCommentBarComponent } from './reusable-components/comment-post-dialog/dialog-comment-bar.component';
 import { CommentPostDialogComponent } from './reusable-components/comment-post-dialog/comment-post-dialog.component';
 import { MomentPostDialogComponent } from './reusable-components/moment-post-dialog/moment-post-dialog.component';
 import { ActivityPostDialogComponent } from './reusable-components/activity-post-dialog/activity-post-dialog.component';
 import { FriendSuggestionBoxComponent } from './reusable-components/friend-suggestion-box/friend-suggestion-box.component';
-import { FriendSuggestionCardComponent } from './reusable-components/friend-suggestion-card/friend-suggestion-card.component';
+import { FriendSuggestionCardComponent } from './reusable-components/friend-suggestion-box/friend-suggestion-card/friend-suggestion-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     HomePageComponent,
+    MessagePageComponent,
     MomentPageComponent,
+    NotificationPageComponent,
     MomentCardComponent,
     TopNavBarComponent,
     MomentBoxComponent,
     ActivityBoxComponent,
     ActivityCardComponent,
+    NotificationBoxComponent,
+    NotificationCardComponent,
     BasicInfoCardComponent,
     DialogCommentBarComponent,
     CommentPostDialogComponent,
