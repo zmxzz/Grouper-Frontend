@@ -21,9 +21,9 @@ export class BasicInfoCardComponent implements OnInit {
     userInfo: object;
     fullname: string;
     username: string;
-    friendCount: number;
-    activityCount: number;
-    momentCount: number;
+    friendCount: number = undefined;
+    activityCount: number = undefined;
+    momentCount: number = undefined;
     getAcceptFriend: any;
 
     ngOnInit() {

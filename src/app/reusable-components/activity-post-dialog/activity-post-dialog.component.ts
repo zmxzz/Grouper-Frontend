@@ -29,10 +29,10 @@ export class ActivityPostDialogComponent {
     // constants: form options
     constructor(
         public dialogRef: MatDialogRef<ActivityPostDialogComponent>, 
-        private activityService: ActivityService,
-        private inputOptionService: InputOptionService,
-        private objectBuilderService: ObjectBuilderService,
-        private communicateService: CommunicateService
+        public activityService: ActivityService,
+        public inputOptionService: InputOptionService,
+        public objectBuilderService: ObjectBuilderService,
+        public communicateService: CommunicateService
         ){}
     onCancelClick(): void {
         this.dialogRef.close();

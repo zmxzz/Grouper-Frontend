@@ -14,21 +14,21 @@
             <div class="one-third-container">
                 <button mat-button class="full-container" (click)="showMyEvent()">
                     <mat-label class="half-container" style="color: #657786">Events</mat-label>
-                    <mat-label *ngIf="activityCount !== NaN" class="half-container" style="color: #1DA1F2">{{ activityCount }}</mat-label>
+                    <mat-label *ngIf="activityCount !== undefined" class="half-container" style="color: #1DA1F2">{{ activityCount }}</mat-label>
                 </button>
             </div>
             <!-- Moments Button -->
             <div class="one-third-container">
                 <button mat-button class="full-container" (click)="showMyMoment()">
                     <mat-label class="half-container" style="color: #657786">Moments</mat-label>
-                    <mat-label *ngIf="activityCount !== NaN" class="half-container" style="color: #1DA1F2">{{ momentCount }}</mat-label>
+                    <mat-label *ngIf="activityCount !== undefined" class="half-container" style="color: #1DA1F2">{{ momentCount }}</mat-label>
                 </button>
             </div>
             <!-- Friends Button -->
             <div class="one-third-container">
                 <button mat-button class="full-container" (click)="showMyFriend()">
                     <mat-label class="half-container" style="color: #657786">Friends</mat-label>
-                    <mat-label *ngIf="activityCount !== NaN" class="half-container" style="color: #1DA1F2">{{ friendCount }}</mat-label>
+                    <mat-label *ngIf="activityCount !== undefined" class="half-container" style="color: #1DA1F2">{{ friendCount }}</mat-label>
                 </button>
             </div>
         </div>

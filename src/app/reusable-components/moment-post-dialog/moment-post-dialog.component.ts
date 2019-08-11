@@ -17,11 +17,11 @@ export class MomentPostDialogComponent {
     // fileTypeService: Service helps detect file types
     constructor(
         public dialogRef: MatDialogRef<MomentPostDialogComponent>, 
-        private fileService: FileService,
-        private momentService: MomentService,
-        private fileTypeService: FileTypeService,
-        private objectBuilderService: ObjectBuilderService,
-        private communicateService: CommunicateService
+        public fileService: FileService,
+        public momentService: MomentService,
+        public fileTypeService: FileTypeService,
+        public objectBuilderService: ObjectBuilderService,
+        public communicateService: CommunicateService
     ) {}
 
     currFile = '';

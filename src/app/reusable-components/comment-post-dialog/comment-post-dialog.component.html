@@ -6,7 +6,7 @@
     <div class="middle username">@{{ data.username }}</div>
     <div class="grouper-content half">
         <mat-label>
-            {{ momentInfo.content }}
+            {{ momentInfo['content'] }}
         </mat-label>
     </div>
     <div class="bar">
@@ -16,7 +16,7 @@
 </div>
 
 <div class="comment-container">
-    <div mat-dialog-content *ngFor="let comment of momentInfo.comments" class="half-bordered-box">
+    <div mat-dialog-content *ngFor="let comment of momentInfo['comments']" class="half-bordered-box">
             <dialog-comment-bar [commentId]="comment"></dialog-comment-bar>
     </div>
 </div>
