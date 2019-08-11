@@ -17,7 +17,6 @@ export class IndexComponent {
     async login() {
         try {
             let user = await this.userService.login(this.username, this.password);
-            console.log(user);
         } catch (error) {
             console.log(error);
         }
@@ -26,7 +25,6 @@ export class IndexComponent {
     async loginWithDemoAccount() {
         try {
             let user = await this.userService.login('lpantecost0', 'Mn6Is9tdF');
-            console.log(user);
         } catch (error) {
             console.log(error);
         }

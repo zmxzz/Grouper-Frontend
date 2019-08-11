@@ -30,10 +30,11 @@ export class UserService {
                 (result) => {
                     localStorage.setItem('grouperUserToken', result); // Set up user token if logged in
                     localStorage.setItem('lastLogin', new Date().toString()); // Set up last login day
-                    resolve(result);
+                    resolve(result); 
                 },
                 (error) => {
-                    console.log('Error: ' + error)
+                    console.log('Login Error: ');
+                    console.log(error);
                     reject(error); // If the request is not accepted, reject the login request
                 }
             );

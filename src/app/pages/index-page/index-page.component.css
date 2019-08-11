@@ -26,7 +26,7 @@
 }
 
 .row-icon {
-    font-size: 5vw; 
+    font-size: 40px; 
     color: white;
     display: inline-block;
 }
@@ -34,7 +34,7 @@
 .row-text {
     color: white;
     height: 100%;
-    font-size: 1.6vw;
+    font-size: 22px;
     display: inline-block;
     font-family: Helvetica;
 }
